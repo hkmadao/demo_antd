@@ -1,21 +1,24 @@
 import { FC, useEffect } from 'react';
 import { Tabs } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
-import { UserRoles, RoleMenus } from './SubForm';
-import MainFormLayout from './MainFormLayout';
+import { RoleMenus, UserRoles } from './components/SubForm';
+import MainFormLayout from './components/MainFormLayout';
 import { actions } from './store';
 
 const FormLayout: FC<{
   idLayout: string;
   /**组件是否是禁用状态 */
   fgDisabled: boolean;
-}> = ({ idLayout, fgDisabled }) => {
+  fgHidden: boolean;
+}> = ({ idLayout, fgDisabled, fgHidden }) => {
   const { TabPane } = Tabs;
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(actions.setComponentInfo({ idUiConf: idLayout, fgDisabled }));
-  }, [idLayout, fgDisabled]);
+    dispatch(
+      actions.setComponentInfo({ idUiConf: idLayout, fgDisabled, fgHidden }),
+    );
+  }, [idLayout, fgDisabled, fgHidden]);
 
   return (
     <>
@@ -31,12 +34,20 @@ const FormLayout: FC<{
           <MainFormLayout />
         </div>
         <div style={{ flex: 'auto' }}>
-          <Tabs defaultActiveKey={'userRoles'}>
-            <TabPane key={'userRoles'} tabKey={'userRoles'} tab={'用户'}>
-              <UserRoles />
-            </TabPane>
-            <TabPane key={'roleMenus'} tabKey={'roleMenus'} tab={'菜单'}>
+          <Tabs defaultActiveKey={'roleMenus'}>
+            <TabPane
+              key={'roleMenus'}
+              tabKey={'roleMenus'}
+              tab={'角色菜单关系'}
+            >
               <RoleMenus />
+            </TabPane>
+            <TabPane
+              key={'userRoles'}
+              tabKey={'userRoles'}
+              tab={'用户角色关系'}
+            >
+              <UserRoles />
             </TabPane>
           </Tabs>
         </div>

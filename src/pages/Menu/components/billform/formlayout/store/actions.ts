@@ -7,11 +7,12 @@ import { subject } from '../../../../conf';
 import { deepCopy } from '@/util';
 export const setComponentInfo: CaseReducer<
   TFormStore,
-  PayloadAction<{ idUiConf: string; fgDisabled: boolean }>
+  PayloadAction<{ idUiConf: string; fgDisabled: boolean; fgHidden: boolean }>
 > = (state, action) => {
-  const { idUiConf, fgDisabled } = action.payload;
+  const { idUiConf, fgDisabled, fgHidden } = action.payload;
   state.idUiConf = idUiConf;
   state.fgDisabled = fgDisabled;
+  state.fgHidden = fgHidden;
 };
 
 export const setFormData: CaseReducer<TFormStore, PayloadAction<TMenu>> = (
@@ -30,10 +31,10 @@ export const addFormData: CaseReducer<
   state.formData = {
     idMenu: nanoid(),
     action: DOStatus.NEW,
+    fgShow: true,
+    fgActive: true,
   };
   if (nodeData) {
-    state.formData.idParent = nodeData.idParent;
-    state.formData.parent = deepCopy(nodeData);
   }
   state.newDataArr = [];
   state.editData = undefined;
@@ -43,7 +44,7 @@ export const addFormData: CaseReducer<
   };
 };
 
-export const cancle: CaseReducer<TFormStore, PayloadAction<void>> = (
+export const cancel: CaseReducer<TFormStore, PayloadAction<void>> = (
   state,
   action,
 ) => {
@@ -72,7 +73,6 @@ export const updateFormData: CaseReducer<TFormStore, PayloadAction<TMenu>> = (
   state,
   action,
 ) => {
-  console.log(action.payload);
   state.formData = {
     ...state.formData,
     ...action.payload,

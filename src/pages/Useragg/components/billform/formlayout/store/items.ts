@@ -5,11 +5,11 @@ import { TFormStore } from '../models';
 /*==========UserRole=============*/
 export const addFormDataUserRole: CaseReducer<
   TFormStore,
-  PayloadAction<Pick<TUserRole, 'idSysUserRole'>>
+  PayloadAction<Pick<TUserRole, 'idUserRole'>>
 > = (state, action) => {
   const userRoleNew: TUserRole = {
     ...action.payload,
-    idSysUserRole: nanoid(),
+    idUserRole: nanoid(),
   };
   userRoleNew.action = DOStatus.NEW;
   if (!state.formData.userRoles) {
@@ -26,7 +26,7 @@ export const updateFormDataUserRole: CaseReducer<
   PayloadAction<TUserRole>
 > = (state, action) => {
   const userRoleNews = state.formData.userRoles?.map((t) => {
-    if (t.idSysUserRole === action.payload.idSysUserRole) {
+    if (t.idUserRole === action.payload.idUserRole) {
       t = { ...t, ...action.payload };
       if (t.action !== DOStatus.NEW) {
         t.action = DOStatus.UPDATED;
@@ -48,7 +48,7 @@ export const deleteFormDataUserRole: CaseReducer<
 > = (state, action) => {
   let userRoleNews = state.formData.userRoles?.slice();
   userRoleNews = userRoleNews?.filter((t) => {
-    if (t.idSysUserRole === action.payload.idSysUserRole) {
+    if (t.idUserRole === action.payload.idUserRole) {
       if (t.action === DOStatus.NEW) {
         return false;
       }

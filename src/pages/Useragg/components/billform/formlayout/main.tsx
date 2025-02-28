@@ -1,21 +1,24 @@
 import { FC, useEffect } from 'react';
 import { Tabs } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
-import { UserRoles } from './SubForm';
-import MainFormLayout from './MainFormLayout';
+import { UserRoles } from './components/SubForm';
+import MainFormLayout from './components/MainFormLayout';
 import { actions } from './store';
 
 const FormLayout: FC<{
   idLayout: string;
   /**组件是否是禁用状态 */
   fgDisabled: boolean;
-}> = ({ idLayout, fgDisabled }) => {
+  fgHidden: boolean;
+}> = ({ idLayout, fgDisabled, fgHidden }) => {
   const { TabPane } = Tabs;
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(actions.setComponentInfo({ idUiConf: idLayout, fgDisabled }));
-  }, [idLayout, fgDisabled]);
+    dispatch(
+      actions.setComponentInfo({ idUiConf: idLayout, fgDisabled, fgHidden }),
+    );
+  }, [idLayout, fgDisabled, fgHidden]);
 
   return (
     <>
@@ -32,7 +35,7 @@ const FormLayout: FC<{
         </div>
         <div style={{ flex: 'auto' }}>
           <Tabs defaultActiveKey={'userRoles'}>
-            <TabPane key={'userRoles'} tabKey={'userRoles'} tab={'系统用户'}>
+            <TabPane key={'userRoles'} tabKey={'userRoles'} tab={'用户角色'}>
               <UserRoles />
             </TabPane>
           </Tabs>

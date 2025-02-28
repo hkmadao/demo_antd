@@ -37,6 +37,12 @@ export const useFgDisabled = () => {
   });
 };
 
+export const useFgHidden = () => {
+  return useSelector((state: { [x: string]: TTableStore }) => {
+    return state[componentName].fgHidden;
+  });
+};
+
 export const useStoreData = () => {
   return useSelector(selectStoreData);
 };
@@ -44,25 +50,6 @@ export const useStoreData = () => {
 export const useSelectRow = () => {
   return useSelector(selectSelectRow);
 };
-/*==========UserRoles=============*/
-export const useUserRolesData = () => {
-  return useSelector((state: { [x: string]: TTableStore }) => {
-    if (
-      !state[componentName].selectedRowKeys ||
-      state[componentName].selectedRowKeys.length !== 1
-    ) {
-      return [];
-    }
-    const record = state[componentName].tableData?.find((d) =>
-      state[componentName].selectedRowKeys?.includes(d.idRole!),
-    );
-    if (!record?.userRoles) {
-      return [];
-    }
-    return record.userRoles;
-  });
-};
-/*==========UserRoles=============*/
 /*==========RoleMenus=============*/
 export const useRoleMenusData = () => {
   return useSelector((state: { [x: string]: TTableStore }) => {
@@ -82,3 +69,22 @@ export const useRoleMenusData = () => {
   });
 };
 /*==========RoleMenus=============*/
+/*==========UserRoles=============*/
+export const useUserRolesData = () => {
+  return useSelector((state: { [x: string]: TTableStore }) => {
+    if (
+      !state[componentName].selectedRowKeys ||
+      state[componentName].selectedRowKeys.length !== 1
+    ) {
+      return [];
+    }
+    const record = state[componentName].tableData?.find((d) =>
+      state[componentName].selectedRowKeys?.includes(d.idRole!),
+    );
+    if (!record?.userRoles) {
+      return [];
+    }
+    return record.userRoles;
+  });
+};
+/*==========UserRoles=============*/

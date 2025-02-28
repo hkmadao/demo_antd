@@ -1,11 +1,19 @@
-import { Checkbox, Dropdown, Menu, TableColumnType, message } from 'antd';
+import {
+  Checkbox,
+  Dropdown,
+  Menu,
+  TableColumnType,
+  message,
+  Popover,
+} from 'antd';
 import moment from 'moment';
 import { DownOutlined } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux';
 import { EPartName } from '@/models';
 import { getRefByAttr } from '@/util';
 import { billformConf } from '../../../../conf';
-import { TRole, TUserRole, TRoleMenu } from '../../../../models';
+import CustomDateText from '@/components/CustomDateText';
+import { TRole, TRoleMenu, TUserRole } from '../../../../models';
 export const useMainTableColumns: () => TableColumnType<TRole>[] = () => {
   const dispatch = useDispatch();
   const toEdit = () => {
@@ -41,7 +49,21 @@ export const useMainTableColumns: () => TableColumnType<TRole>[] = () => {
       dataIndex: 'idRole',
       key: 'idRole',
       render: (_dom: any, record: any) => {
-        return <>{record.idRole ? record.idRole : '--'}</>;
+        const content = record.idRole ? record.idRole : '--';
+        return (
+          <div
+            style={{
+              overflow: 'hidden',
+              width: '140px',
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            <Popover content={content} trigger="hover">
+              {content}
+            </Popover>
+          </div>
+        );
       },
     },
     {
@@ -50,7 +72,21 @@ export const useMainTableColumns: () => TableColumnType<TRole>[] = () => {
       dataIndex: 'name',
       key: 'name',
       render: (_dom: any, record: any) => {
-        return <>{record.name ? record.name : '--'}</>;
+        const content = record.name ? record.name : '--';
+        return (
+          <div
+            style={{
+              overflow: 'hidden',
+              width: '140px',
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            <Popover content={content} trigger="hover">
+              {content}
+            </Popover>
+          </div>
+        );
       },
     },
     {
@@ -59,71 +95,53 @@ export const useMainTableColumns: () => TableColumnType<TRole>[] = () => {
       dataIndex: 'displayName',
       key: 'displayName',
       render: (_dom: any, record: any) => {
-        return <>{record.displayName ? record.displayName : '--'}</>;
-      },
-    },
-    /*[- */
-    {
-      width: 150,
-      fixed: 'right',
-      title: '操作',
-      key: 'action',
-      sorter: true,
-      render: () => (
-        <Dropdown overlay={menu} trigger={['click']}>
-          <a className="ant-dropdown-link" onClick={(e) => e.preventDefault()}>
-            更多 <DownOutlined />
-          </a>
-        </Dropdown>
-      ),
-    },
-    /* -]*/
-  ];
-};
-/**用户 */
-export const useUserRolesColumns: () => TableColumnType<TUserRole>[] = () => {
-  return [
-    {
-      title: '用户角色关系主属性',
-      dataIndex: 'idSysUserRole',
-      key: 'idSysUserRole',
-      render: (_dom: any, record: any) => {
-        return <>{record.idSysUserRole ? record.idSysUserRole : '--'}</>;
-      },
-    },
-    {
-      title: '系统用户',
-      dataIndex: ['idUser', 'user'],
-      key: 'idUser',
-      render: (_dom: any, record: any) => {
-        const refConf = getRefByAttr(
-          EPartName.Body,
-          'userRoles',
-          'idUser',
-          billformConf!,
+        const content = record.displayName ? record.displayName : '--';
+        return (
+          <div
+            style={{
+              overflow: 'hidden',
+              width: '140px',
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            <Popover content={content} trigger="hover">
+              {content}
+            </Popover>
+          </div>
         );
-        if (refConf) {
-          const refData = (record as any).user;
-          if (refData) {
-            return refData[refConf.displayProp!];
-          }
-        }
       },
     },
   ];
 };
-/**菜单 */
+/**角色菜单关系 */
 export const useRoleMenusColumns: () => TableColumnType<TRoleMenu>[] = () => {
   return [
     {
+      width: 150,
       title: '角色与菜单id',
       dataIndex: 'idRoleMenu',
       key: 'idRoleMenu',
       render: (_dom: any, record: any) => {
-        return <>{record.idRoleMenu ? record.idRoleMenu : '--'}</>;
+        const content = record.idRoleMenu ? record.idRoleMenu : '--';
+        return (
+          <div
+            style={{
+              overflow: 'hidden',
+              width: '140px',
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            <Popover content={content} trigger="hover">
+              {content}
+            </Popover>
+          </div>
+        );
       },
     },
     {
+      width: 150,
       title: '系统菜单',
       dataIndex: ['idMenu', 'menu'],
       key: 'idMenu',
@@ -136,6 +154,54 @@ export const useRoleMenusColumns: () => TableColumnType<TRoleMenu>[] = () => {
         );
         if (refConf) {
           const refData = (record as any).menu;
+          if (refData) {
+            return refData[refConf.displayProp!];
+          }
+        }
+      },
+    },
+  ];
+};
+/**用户角色关系 */
+export const useUserRolesColumns: () => TableColumnType<TUserRole>[] = () => {
+  return [
+    {
+      width: 150,
+      title: '用户角色关系主属性',
+      dataIndex: 'idUserRole',
+      key: 'idUserRole',
+      render: (_dom: any, record: any) => {
+        const content = record.idUserRole ? record.idUserRole : '--';
+        return (
+          <div
+            style={{
+              overflow: 'hidden',
+              width: '140px',
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            <Popover content={content} trigger="hover">
+              {content}
+            </Popover>
+          </div>
+        );
+      },
+    },
+    {
+      width: 150,
+      title: '系统用户',
+      dataIndex: ['idUser', 'user'],
+      key: 'idUser',
+      render: (_dom: any, record: any) => {
+        const refConf = getRefByAttr(
+          EPartName.Body,
+          'userRoles',
+          'idUser',
+          billformConf!,
+        );
+        if (refConf) {
+          const refData = (record as any).user;
           if (refData) {
             return refData[refConf.displayProp!];
           }

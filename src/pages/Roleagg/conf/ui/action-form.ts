@@ -2,14 +2,13 @@ import { TActionContent } from '@/models';
 
 const actionFormConf: TActionContent | undefined = {
   action: 1,
+  displayName: '系统用户编辑按钮',
   idButtonAction: '0000-e17f1494-779f-46a2-9096-03598277a0f9',
-  name: 'table_edit_action',
-  displayName: '表单编辑按钮',
-  idProject: '0000-8a8546d0-895e-414b-a722-4f70bfae3548',
-  idSubProject: '0000-a4bb91a0-5ab4-41fb-b5c9-0accd88c6ad7',
-  subProjectName: '模型管理',
-  gap: '10px',
-  justifyContent: 'start',
+  idProject: 'hLlXlmUNOcjAaDoWxZzrN',
+  idSubProject: 'tuz4_94BGuVuxYxxL6a_r',
+  name: 'sysuser_edit_action',
+  projectName: 'Jpa基础项目',
+  subProjectName: '系统模型',
   buttons: [
     {
       label: '保存',
@@ -19,6 +18,7 @@ const actionFormConf: TActionContent | undefined = {
       buttonSize: 'middle',
       type: 'primary',
       showOrder: 0,
+      nameScript: "'保存'",
     },
     {
       label: '保存并新增',
@@ -29,6 +29,7 @@ const actionFormConf: TActionContent | undefined = {
       buttonSize: 'middle',
       type: 'primary',
       showOrder: 1,
+      nameScript: "'保存并新增'",
     },
     {
       label: '取消',
@@ -38,6 +39,7 @@ const actionFormConf: TActionContent | undefined = {
       buttonSize: 'middle',
       type: 'primary',
       showOrder: 2,
+      nameScript: "'取消'",
     },
     {
       label: '刷新',
@@ -48,8 +50,16 @@ const actionFormConf: TActionContent | undefined = {
       buttonSize: 'middle',
       type: 'primary',
       showOrder: 3,
+      nameScript: "'刷新'",
     },
   ],
+  gap: '10px',
+  justifyContent: 'start',
+  compDisplayName: '系统用户',
+  componentType: 'Single',
+  idComponent: 'vUqfWDE_ELDkq0P5PjpSS',
+  idComponentModule: '-IKcXCfnf_Gc2HSZEgs2v',
+  componentModuleName: '系统模块',
 };
 
 export { actionFormConf };

@@ -9,7 +9,6 @@ const Sevice: FC = () => {
   return (
     <>
       <Select
-        disabled
         value={window.localStorage.getItem('service') ?? 'Java'}
         style={{ width: 100 }}
         onChange={handleServiceChange}

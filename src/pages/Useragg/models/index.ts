@@ -25,7 +25,7 @@ export type TUser = {
 /**用户角色关系 */
 export type TUserRole = {
   /**用户角色关系主属性 */
-  idSysUserRole?: string;
+  idUserRole?: string;
   /**角色 */
   role?: TRole;
   idRole?: string;

@@ -25,6 +25,12 @@ export const useFgDisabled = () => {
   });
 };
 
+export const useFgHidden = () => {
+  return useSelector((state: { [x: string]: TFormStore }) => {
+    return state[componentName].fgHidden;
+  });
+};
+
 const selectStore = (state: { [x: string]: TFormStore }) => {
   return state[componentName].formData;
 };
@@ -32,18 +38,6 @@ const selectStore = (state: { [x: string]: TFormStore }) => {
 export const useFormData = () => {
   return useSelector(selectStore);
 };
-/*==========UserRoles=============*/
-export const useUserRolesData = () => {
-  return useSelector((state: { [x: string]: TFormStore }) => {
-    if (!state[componentName].formData?.userRoles) {
-      return [];
-    }
-    return state[componentName].formData.userRoles.filter(
-      (userRole) => userRole.action !== DOStatus.DELETED,
-    );
-  });
-};
-/*==========UserRoles=============*/
 /*==========RoleMenus=============*/
 export const useRoleMenusData = () => {
   return useSelector((state: { [x: string]: TFormStore }) => {
@@ -56,3 +50,15 @@ export const useRoleMenusData = () => {
   });
 };
 /*==========RoleMenus=============*/
+/*==========UserRoles=============*/
+export const useUserRolesData = () => {
+  return useSelector((state: { [x: string]: TFormStore }) => {
+    if (!state[componentName].formData?.userRoles) {
+      return [];
+    }
+    return state[componentName].formData.userRoles.filter(
+      (userRole) => userRole.action !== DOStatus.DELETED,
+    );
+  });
+};
+/*==========UserRoles=============*/

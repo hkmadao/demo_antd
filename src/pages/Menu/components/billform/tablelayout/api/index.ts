@@ -6,7 +6,7 @@ const ListAPI = {
     return API.POST(`/menu/aqPage`, params);
   },
   getById: (id: string) => {
-    return API.GET(`/menu/extGetById/${id}`);
+    return API.GET(`/menu/getById/${id}`);
   },
   batchRemove: (params: TMenu[]) => {
     return API.POST(`/menu/batchRemove`, params);

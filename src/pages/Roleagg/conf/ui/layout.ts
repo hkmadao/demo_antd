@@ -6,15 +6,15 @@ const layoutConf: TUiFactoryContent = {
   componentName: null,
   displayName: '角色聚合',
   fgTemplate: false,
-  idComponent: 'Ms8xR9sTSIJ0upXYCAarw',
-  idComponentModule: 'NUWZLV-HXSQY7up9bY58k',
-  idFactory: 'E70eLi4Kq4FEgJ5Cu_aTR',
-  idProject: '0000-fe135b87-fb33-481f-81a6-53dff1808f43',
-  idSubProject: '0000-bb004a40-3b38-4c9c-9f30-b69a543b0598',
+  idComponent: 'haSdru3_I3BPAFH9yI5zQ',
+  idComponentModule: '-IKcXCfnf_Gc2HSZEgs2v',
+  idFactory: '08ORRiUKRX-SqOFHLYOse',
+  idProject: 'hLlXlmUNOcjAaDoWxZzrN',
+  idSubProject: 'tuz4_94BGuVuxYxxL6a_r',
   name: 'Roleagg',
-  projectName: '模板代码设计工具RUST',
+  projectName: 'Jpa基础项目',
   refIdContent: null,
-  subProjectName: '模型管理',
+  subProjectName: '系统模型',
   pages: [
     { key: 'index', id: 'index', code: 'index', name: '首页' },
     {
@@ -49,8 +49,8 @@ const layoutConf: TUiFactoryContent = {
           children: [],
           component: {
             componentType: 'search',
-            idRef: 'BBs-iDDb8ZmZYLgNmA0qO',
-            name: '角色聚合',
+            idRef: 'FWOu-Rw-tGncUV60JvioX',
+            name: '角色',
           },
         },
         {
@@ -66,8 +66,8 @@ const layoutConf: TUiFactoryContent = {
           children: [],
           component: {
             componentType: 'viewButton',
-            idRef: '0000-be9070b2-6fb9-487a-8fcc-0abc34fdbf39',
-            name: '表单列表按钮',
+            idRef: 'VBgw3neaTYfXuIiWomefb',
+            name: '系统用户列表按钮',
           },
           pageMaps: [
             {
@@ -95,7 +95,7 @@ const layoutConf: TUiFactoryContent = {
           children: [],
           component: {
             componentType: 'viewBillform',
-            idRef: 'yj4t1nE1BnFtmIHw0bC8k',
+            idRef: 'pZZYgBwYjhcKf9_yBLdG1',
             name: '角色聚合',
           },
         },
@@ -112,8 +112,8 @@ const layoutConf: TUiFactoryContent = {
           children: [],
           component: {
             componentType: 'editButton',
-            idRef: '0000-e17f1494-779f-46a2-9096-03598277a0f9',
-            name: '表单编辑按钮',
+            idRef: 'oxlv6pTycs5H4lJBC2QOO',
+            name: '系统用户编辑按钮',
           },
         },
         {
@@ -129,7 +129,7 @@ const layoutConf: TUiFactoryContent = {
           children: [],
           component: {
             componentType: 'editBillform',
-            idRef: 'yj4t1nE1BnFtmIHw0bC8k',
+            idRef: 'pZZYgBwYjhcKf9_yBLdG1',
             name: '角色聚合',
           },
           pageMaps: [
